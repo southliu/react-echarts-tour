@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import Header from './components/Header'
 import styles from './index.module.less'
 import dataScreenTitle from './assets/title.png'
@@ -13,7 +13,6 @@ import PlatformSourceChart from './components/PlatformSourceChart'
 
 function Page() {
   const screenRef = useRef<HTMLDivElement>(null)
-  const [isLoading, setLoading] = useState(true)
 
   /**
    * 根据浏览器大小推断比例
@@ -33,11 +32,6 @@ function Page() {
       screenRef.current.style.transform = `scale(${getScale()}) translate(-50%, -50%)`
     }
   }
-  useLayoutEffect(() => {
-    setTimeout(() => {
-      setLoading(false)
-    }, 1000)
-  }, [])
 
   useLayoutEffect(() => {
     if (screenRef.current) {
